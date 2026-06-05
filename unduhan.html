@@ -3,31 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Desa Pepe &ndash; Unduhan</title>
+  <title>Desa Pepe – Unduhan</title>
   <link rel="stylesheet" href="style.css"/>
-  <style>
-    nav li { position: relative; }
-    nav li .dropdown {
-      display: none;
-      position: absolute;
-      top: 100%; left: 0;
-      background: var(--dp);
-      min-width: 160px;
-      border-radius: 0 0 8px 8px;
-      box-shadow: 0 8px 20px #0004;
-      z-index: 200;
-    }
-    nav li:hover .dropdown { display: block; }
-    nav li .dropdown a {
-      display: block;
-      padding: 0.6rem 1.2rem;
-      color: #cfc6ec;
-      font-size: 0.82rem;
-      border-bottom: 1px solid #ffffff10;
-    }
-    nav li .dropdown a:last-child { border-bottom: none; }
-    nav li .dropdown a:hover { background: var(--mp); color: var(--gold); }
-  </style>
 </head>
 <body>
 
@@ -37,7 +14,7 @@
   </div>
   <div class="header-text">
     <h1>Pemerintah Desa Pepe</h1>
-    <p>Kec. Ngawen &nbsp;&middot;&nbsp; Kab. Klaten &nbsp;&middot;&nbsp; Jawa Tengah</p>
+    <p>Kec. Ngawen &nbsp;·&nbsp; Kab. Klaten &nbsp;·&nbsp; Jawa Tengah</p>
   </div>
 </header>
 
@@ -45,7 +22,7 @@
   <ul>
     <li><a href="index.html">Home</a></li>
     <li><a href="profil.html">Profil</a></li>
-    <li>
+    <li id="nav-galeri">
       <a href="galeri.html">Galeri ▾</a>
       <div class="dropdown">
         <a href="galeri.html#kegiatan">Kegiatan Desa</a>
@@ -59,37 +36,49 @@
 <main>
   <h2 class="sec-title">Unduhan Dokumen</h2>
   <p style="font-size:.84rem;color:var(--muted);margin-bottom:1.5rem;">
-    Klik tombol unduh &mdash; file akan langsung tersimpan ke perangkat Anda.
+    Klik tombol unduh — file akan langsung tersimpan ke perangkat Anda.
   </p>
 
   <div class="dl-card" id="flyer">
-    <div class="dl-ico">&#127912;</div>
+    <div class="dl-ico">🎨</div>
     <div>
       <h3>Flyer Event Desa</h3>
-      <p>Desain flyer promosi kegiatan / event Desa Pepe &nbsp;&middot;&nbsp; Format .jpg</p>
-      <a class="btn-dl" href="aset/img/Fleyer.png" download="flyer_desa.jpg">
-        &#8659; Unduh Flyer (.jpg)
+      <p>Desain flyer promosi kegiatan / event Desa Pepe &nbsp;·&nbsp; Format .png</p>
+      <a class="btn-dl" href="aset/img/fleyer.png" download="flyer_desa.png">
+        ⬇ Unduh Flyer (.png)
       </a>
     </div>
   </div>
 
   <div class="dl-card" id="pengumuman">
-    <div class="dl-ico">&#128196;</div>
+    <div class="dl-ico">📄</div>
     <div>
       <h3>Pengumuman Resmi Desa</h3>
-      <p>Dokumen pengumuman kegiatan Desa Pepe &nbsp;&middot;&nbsp; Format .pdf</p>
-      <a class="btn-dl" href="aset/surat/Surat hut.pdf" download="pengumuman.pdf">
-        &#8659; Unduh Pengumuman (.pdf)
+      <p>Dokumen pengumuman kegiatan Desa Pepe &nbsp;·&nbsp; Format .pdf</p>
+      <a class="btn-dl" href="aset/surat/surat hut.pdf" download="pengumuman.pdf">
+        ⬇ Unduh Pengumuman (.pdf)
       </a>
     </div>
   </div>
 </main>
 
 <footer>
-  <p>&copy; <span id="year">2025</span> <strong>Desa Pepe</strong> &nbsp;&ndash;&nbsp; Kec. Ngawen, Kab. Klaten, Jawa Tengah</p>
+  <p>&copy; <span id="year">2025</span> <strong>Desa Pepe</strong> &nbsp;–&nbsp; Kec. Ngawen, Kab. Klaten, Jawa Tengah</p>
 </footer>
 
 <div id="toast"></div>
 <script src="main.js"></script>
+<script>
+  document.querySelectorAll('nav li').forEach(function(li) {
+    li.addEventListener('mouseenter', function() {
+      var dd = li.querySelector('.dropdown');
+      if (dd) dd.style.display = 'block';
+    });
+    li.addEventListener('mouseleave', function() {
+      var dd = li.querySelector('.dropdown');
+      if (dd) dd.style.display = '';
+    });
+  });
+</script>
 </body>
 </html>
