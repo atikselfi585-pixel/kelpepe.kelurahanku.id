@@ -6,15 +6,11 @@
   <title>Desa Pepe – Galeri</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* ── DROPDOWN ── */
-    nav ul { position: relative; }
     nav li { position: relative; }
-
     nav li .dropdown {
       display: none;
       position: absolute;
-      top: 100%;
-      left: 0;
+      top: 100%; left: 0;
       background: var(--dp);
       min-width: 180px;
       border-radius: 0 0 8px 8px;
@@ -22,7 +18,6 @@
       z-index: 200;
     }
     nav li:hover .dropdown { display: block; }
-
     nav li .dropdown a {
       display: block;
       padding: 0.6rem 1.2rem;
@@ -30,12 +25,8 @@
       font-size: 0.82rem;
       border-bottom: 1px solid #ffffff10;
     }
-    nav li .dropdown a:hover {
-      background: var(--mp);
-      color: var(--gold);
-    }
-
-    /* ── GALLERY CAPTION ── */
+    nav li .dropdown a:last-child { border-bottom: none; }
+    nav li .dropdown a:hover { background: var(--mp); color: var(--gold); }
     .gallery-item p {
       text-align: center;
       font-size: 0.8rem;
@@ -58,31 +49,16 @@
 
 <nav>
   <ul>
-    <li><a href="index.html">🏠 Home</a></li>
-
+    <li><a href="index.html">Home</a></li>
+    <li><a href="profil.html">Profil</a></li>
     <li>
-      <a href="profil.html">📋 Profil ▾</a>
-      <div class="dropdown">
-        <a href="profil.html#data">Data Desa</a>
-        <a href="profil.html#visi">Visi &amp; Misi</a>
-      </div>
-    </li>
-
-    <li>
-      <a href="galeri.html" class="active">🖼️ Galeri ▾</a>
+      <a href="galeri.html" class="active">Galeri ▾</a>
       <div class="dropdown">
         <a href="galeri.html#kegiatan">Kegiatan Desa</a>
         <a href="galeri.html#potensi">Potensi Desa</a>
       </div>
     </li>
-
-    <li>
-      <a href="unduhan.html">📥 Unduhan ▾</a>
-      <div class="dropdown">
-        <a href="unduhan.html#flyer">Flyer Event</a>
-        <a href="unduhan.html#pengumuman">Pengumuman</a>
-      </div>
-    </li>
+    <li><a href="unduhan.html">Unduhan</a></li>
   </ul>
 </nav>
 
@@ -108,6 +84,25 @@
     <div class="gallery-item">
       <img src="aset/img/kegiatan 4.jpeg" alt="Kegiatan 4">
       <p>Kegiatan 4</p>
+    </div>
+  </div>
+
+  <h2 class="sec-title" id="potensi" style="margin-top:2rem;">Potensi Desa</h2>
+  <p style="font-size:0.85rem;color:var(--muted);margin-bottom:1.2rem;">
+    Potensi unggulan yang dimiliki Desa Pepe.
+  </p>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <div class="gi-ico">&#128444;</div>
+      <span>Tambahkan foto potensi</span>
+    </div>
+    <div class="gallery-item">
+      <div class="gi-ico">&#128444;</div>
+      <span>Tambahkan foto potensi</span>
+    </div>
+    <div class="gallery-item">
+      <div class="gi-ico">&#128444;</div>
+      <span>Tambahkan foto potensi</span>
     </div>
   </div>
 </main>
