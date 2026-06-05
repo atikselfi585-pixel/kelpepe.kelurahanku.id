@@ -3,31 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Desa Pepe &ndash; Profil</title>
+  <title>Desa Pepe – Profil</title>
   <link rel="stylesheet" href="style.css"/>
-  <style>
-    nav li { position: relative; }
-    nav li .dropdown {
-      display: none;
-      position: absolute;
-      top: 100%; left: 0;
-      background: var(--dp);
-      min-width: 160px;
-      border-radius: 0 0 8px 8px;
-      box-shadow: 0 8px 20px #0004;
-      z-index: 200;
-    }
-    nav li:hover .dropdown { display: block; }
-    nav li .dropdown a {
-      display: block;
-      padding: 0.6rem 1.2rem;
-      color: #cfc6ec;
-      font-size: 0.82rem;
-      border-bottom: 1px solid #ffffff10;
-    }
-    nav li .dropdown a:last-child { border-bottom: none; }
-    nav li .dropdown a:hover { background: var(--mp); color: var(--gold); }
-  </style>
 </head>
 <body>
 
@@ -37,7 +14,7 @@
   </div>
   <div class="header-text">
     <h1>Pemerintah Desa Pepe</h1>
-    <p>Kec. Ngawen &nbsp;&middot;&nbsp; Kab. Klaten &nbsp;&middot;&nbsp; Jawa Tengah</p>
+    <p>Kec. Ngawen &nbsp;·&nbsp; Kab. Klaten &nbsp;·&nbsp; Jawa Tengah</p>
   </div>
 </header>
 
@@ -45,7 +22,7 @@
   <ul>
     <li><a href="index.html">Home</a></li>
     <li><a href="profil.html" class="active">Profil</a></li>
-    <li>
+    <li id="nav-galeri">
       <a href="galeri.html">Galeri ▾</a>
       <div class="dropdown">
         <a href="galeri.html#kegiatan">Kegiatan Desa</a>
@@ -75,12 +52,12 @@
   <h2 class="sec-title" id="visi">Visi &amp; Misi</h2>
   <div class="cards">
     <div class="card">
-      <div class="ico">&#127919;</div>
+      <div class="ico">🎯</div>
       <h3>Visi</h3>
       <p>"Terwujudnya Desa Pepe yang Maju, Mandiri, Sejahtera, Berbudaya, dan Berdaya Saing melalui pelayanan publik yang berkualitas serta partisipasi aktif masyarakat."</p>
     </div>
     <div class="card">
-      <div class="ico">&#128204;</div>
+      <div class="ico">📌</div>
       <h3>Misi</h3>
       <p>
         1. Meningkatkan kualitas pelayanan kepada masyarakat secara cepat, tepat, dan transparan.<br><br>
@@ -92,10 +69,22 @@
 </main>
 
 <footer>
-  <p>&copy; <span id="year">2025</span> <strong>Desa Pepe</strong> &nbsp;&ndash;&nbsp; Kec. Ngawen, Kab. Klaten, Jawa Tengah</p>
+  <p>&copy; <span id="year">2025</span> <strong>Desa Pepe</strong> &nbsp;–&nbsp; Kec. Ngawen, Kab. Klaten, Jawa Tengah</p>
 </footer>
 
 <div id="toast"></div>
 <script src="main.js"></script>
+<script>
+  document.querySelectorAll('nav li').forEach(function(li) {
+    li.addEventListener('mouseenter', function() {
+      var dd = li.querySelector('.dropdown');
+      if (dd) dd.style.display = 'block';
+    });
+    li.addEventListener('mouseleave', function() {
+      var dd = li.querySelector('.dropdown');
+      if (dd) dd.style.display = '';
+    });
+  });
+</script>
 </body>
 </html>
