@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="style.css" />
   <style>
     nav li { position: relative; }
+
+    /* Dropdown — toggle via JS, bukan pure hover */
     nav li .dropdown {
       display: none;
       position: absolute;
@@ -17,7 +19,7 @@
       box-shadow: 0 8px 20px #0004;
       z-index: 200;
     }
-    nav li:hover .dropdown { display: block; }
+    nav li.open .dropdown { display: block; }
     nav li .dropdown a {
       display: block;
       padding: 0.6rem 1.2rem;
@@ -27,6 +29,32 @@
     }
     nav li .dropdown a:last-child { border-bottom: none; }
     nav li .dropdown a:hover { background: var(--mp); color: var(--gold); }
+
+    /* Tab galeri */
+    .gallery-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.2rem;
+    }
+    .tab-btn {
+      padding: 0.4rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid #ffffff20;
+      background: transparent;
+      color: var(--muted);
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .tab-btn.active {
+      background: var(--dp);
+      color: #fff;
+      border-color: var(--dp);
+    }
+
+    .section-panel { display: none; }
+    .section-panel.active { display: block; }
+
     .gallery-item p {
       text-align: center;
       font-size: 0.8rem;
@@ -51,11 +79,12 @@
   <ul>
     <li><a href="index.html">Home</a></li>
     <li><a href="profil.html">Profil</a></li>
-    <li>
-      <a href="galeri.html" class="active">Galeri ▾</a>
+    <li id="nav-galeri">
+      <!-- Pakai <button> agar bisa diklik, bukan hanya hover -->
+      <button class="nav-toggle active" onclick="toggleNav('nav-galeri')">Galeri ▾</button>
       <div class="dropdown">
-        <a href="galeri.html#kegiatan">Kegiatan Desa</a>
-        <a href="galeri.html#potensi">Potensi Desa</a>
+        <a href="galeri.html#kegiatan" onclick="switchTab('kegiatan')">Kegiatan Desa</a>
+        <a href="galeri.html#potensi" onclick="switchTab('potensi')">Potensi Desa</a>
       </div>
     </li>
     <li><a href="unduhan.html">Unduhan</a></li>
@@ -63,48 +92,54 @@
 </nav>
 
 <main>
-  <h2 class="sec-title" id="kegiatan">Galeri Kegiatan</h2>
-  <p style="font-size:0.85rem;color:var(--muted);margin-bottom:1.2rem;">
+  <h2 class="sec-title">Galeri Desa Pepe</h2>
+  <p style="font-size:0.85rem;color:var(--muted);margin-bottom:1rem;">
     Dokumentasi kegiatan dan potensi Desa Pepe.
   </p>
 
-  <div class="gallery-grid">
-    <div class="gallery-item">
-      <img src="aset/img/Kegiatan 1.jpeg" alt="Kegiatan 1">
-      <p>Kegiatan 1</p>
-    </div>
-    <div class="gallery-item">
-      <img src="aset/img/kegiatan 2.jpeg" alt="Kegiatan 2">
-      <p>Kegiatan 2</p>
-    </div>
-    <div class="gallery-item">
-      <img src="aset/img/kegiatan 3.jpeg" alt="Kegiatan 3">
-      <p>Kegiatan 3</p>
-    </div>
-    <div class="gallery-item">
-      <img src="aset/img/kegiatan 4.jpeg" alt="Kegiatan 4">
-      <p>Kegiatan 4</p>
+  <!-- Tab Switcher -->
+  <div class="gallery-tabs">
+    <button class="tab-btn active" id="btn-kegiatan" onclick="switchTab('kegiatan')">Kegiatan Desa</button>
+    <button class="tab-btn" id="btn-potensi" onclick="switchTab('potensi')">Potensi Desa</button>
+  </div>
+
+  <!-- Panel Kegiatan -->
+  <div class="section-panel active" id="panel-kegiatan">
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="aset/img/Kegiatan 1.jpeg" alt="Kegiatan 1">
+        <p>Kegiatan 1</p>
+      </div>
+      <div class="gallery-item">
+        <img src="aset/img/kegiatan 2.jpeg" alt="Kegiatan 2">
+        <p>Kegiatan 2</p>
+      </div>
+      <div class="gallery-item">
+        <img src="aset/img/kegiatan 3.jpeg" alt="Kegiatan 3">
+        <p>Kegiatan 3</p>
+      </div>
+      <div class="gallery-item">
+        <img src="aset/img/kegiatan 4.jpeg" alt="Kegiatan 4">
+        <p>Kegiatan 4</p>
+      </div>
     </div>
   </div>
 
-  <h2 class="sec-title" id="potensi" style="margin-top:2rem;">Potensi Desa</h2>
-  <p style="font-size:0.85rem;color:var(--muted);margin-bottom:1.2rem;">
-    Potensi unggulan yang dimiliki Desa Pepe.
-  </p>
-  <div class="gallery-grid">
-    <div class="gallery-item">
-      <div class="gi-ico">
-        <img src="aset/img/potensi 1.jpg" />
+  <!-- Panel Potensi -->
+  <div class="section-panel" id="panel-potensi">
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="aset/img/potensi 1.jpg" alt="Potensi 1">
+        <p>Potensi 1</p>
       </div>
-    </div>
-    <div class="gallery-item">
-      <div class="gi-ico">
-        <img src="aset/img/potensi 2.jpeg" />
+      <div class="gallery-item">
+        <img src="aset/img/potensi 2.jpeg" alt="Potensi 2">
+        <p>Potensi 2</p>
       </div>
-    </div>
-    <div class="gallery-item">
-      <div class="gi-ico">
-      <img src="aset/img/potensi 3.jpg"
+      <div class="gallery-item">
+        <img src="aset/img/potensi 3.jpg" alt="Potensi 3">  <!-- tag ditutup dengan benar -->
+        <p>Potensi 3</p>
+      </div>
     </div>
   </div>
 </main>
@@ -115,5 +150,39 @@
 
 <div id="toast"></div>
 <script src="main.js"></script>
+<script>
+  /* ── Dropdown nav toggle ── */
+  function toggleNav(id) {
+    const li = document.getElementById(id);
+    const isOpen = li.classList.contains('open');
+    // tutup semua dropdown dulu
+    document.querySelectorAll('nav li.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) li.classList.add('open');
+  }
+
+  // Tutup dropdown kalau klik di luar
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('nav li')) {
+      document.querySelectorAll('nav li.open').forEach(el => el.classList.remove('open'));
+    }
+  });
+
+  /* ── Tab switcher galeri ── */
+  function switchTab(tab) {
+    // Tutup dropdown setelah klik
+    document.querySelectorAll('nav li.open').forEach(el => el.classList.remove('open'));
+
+    ['kegiatan', 'potensi'].forEach(function(t) {
+      document.getElementById('panel-' + t).classList.toggle('active', t === tab);
+      document.getElementById('btn-' + t).classList.toggle('active', t === tab);
+    });
+  }
+
+  // Baca hash URL saat halaman dibuka (#kegiatan atau #potensi)
+  window.addEventListener('DOMContentLoaded', function() {
+    const hash = window.location.hash.replace('#', '');
+    if (hash === 'kegiatan' || hash === 'potensi') switchTab(hash);
+  });
+</script>
 </body>
 </html>
