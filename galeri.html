@@ -5,63 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Desa Pepe – Galeri</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    nav li { position: relative; }
-
-    /* Dropdown — toggle via JS, bukan pure hover */
-    nav li .dropdown {
-      display: none;
-      position: absolute;
-      top: 100%; left: 0;
-      background: var(--dp);
-      min-width: 180px;
-      border-radius: 0 0 8px 8px;
-      box-shadow: 0 8px 20px #0004;
-      z-index: 200;
-    }
-    nav li.open .dropdown { display: block; }
-    nav li .dropdown a {
-      display: block;
-      padding: 0.6rem 1.2rem;
-      color: #cfc6ec;
-      font-size: 0.82rem;
-      border-bottom: 1px solid #ffffff10;
-    }
-    nav li .dropdown a:last-child { border-bottom: none; }
-    nav li .dropdown a:hover { background: var(--mp); color: var(--gold); }
-
-    /* Tab galeri */
-    .gallery-tabs {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 1.2rem;
-    }
-    .tab-btn {
-      padding: 0.4rem 1.1rem;
-      border-radius: 999px;
-      border: 1px solid #ffffff20;
-      background: transparent;
-      color: var(--muted);
-      font-size: 0.82rem;
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s;
-    }
-    .tab-btn.active {
-      background: var(--dp);
-      color: #fff;
-      border-color: var(--dp);
-    }
-
-    .section-panel { display: none; }
-    .section-panel.active { display: block; }
-
-    .gallery-item p {
-      text-align: center;
-      font-size: 0.8rem;
-      color: var(--muted);
-      padding: 0.4rem 0 0.2rem;
-    }
-  </style>
 </head>
 <body>
 
@@ -80,11 +23,10 @@
     <li><a href="index.html">Home</a></li>
     <li><a href="profil.html">Profil</a></li>
     <li id="nav-galeri">
-      <!-- Pakai <button> agar bisa diklik, bukan hanya hover -->
-      <button class="nav-toggle active" onclick="toggleNav('nav-galeri')">Galeri ▾</button>
+      <a href="#" class="active" onclick="toggleNav('nav-galeri'); return false;">Galeri ▾</a>
       <div class="dropdown">
-        <a href="galeri.html#kegiatan" onclick="switchTab('kegiatan')">Kegiatan Desa</a>
-        <a href="galeri.html#potensi" onclick="switchTab('potensi')">Potensi Desa</a>
+        <a href="#" onclick="switchTab('kegiatan'); return false;">Kegiatan Desa</a>
+        <a href="#" onclick="switchTab('potensi'); return false;">Potensi Desa</a>
       </div>
     </li>
     <li><a href="unduhan.html">Unduhan</a></li>
@@ -97,7 +39,6 @@
     Dokumentasi kegiatan dan potensi Desa Pepe.
   </p>
 
-  <!-- Tab Switcher -->
   <div class="gallery-tabs">
     <button class="tab-btn active" id="btn-kegiatan" onclick="switchTab('kegiatan')">Kegiatan Desa</button>
     <button class="tab-btn" id="btn-potensi" onclick="switchTab('potensi')">Potensi Desa</button>
@@ -107,19 +48,19 @@
   <div class="section-panel active" id="panel-kegiatan">
     <div class="gallery-grid">
       <div class="gallery-item">
-        <img src="aset/img/Kegiatan 1.jpeg" alt="Kegiatan-1">
+        <img src="aset/img/Kegiatan%201.jpeg" alt="Kegiatan 1">
         <p>Kegiatan 1</p>
       </div>
       <div class="gallery-item">
-        <img src="aset/img/kegiatan 2.jpeg" alt="Kegiatan-2">
+        <img src="aset/img/kegiatan%202.jpeg" alt="Kegiatan 2">
         <p>Kegiatan 2</p>
       </div>
       <div class="gallery-item">
-        <img src="aset/img/kegiatan 3.jpeg" alt="Kegiatan-3">
+        <img src="aset/img/kegiatan%203.jpeg" alt="Kegiatan 3">
         <p>Kegiatan 3</p>
       </div>
       <div class="gallery-item">
-        <img src="aset/img/kegiatan 4.jpeg" alt="Kegiatan-4">
+        <img src="aset/img/kegiatan%204.jpeg" alt="Kegiatan 4">
         <p>Kegiatan 4</p>
       </div>
     </div>
@@ -129,15 +70,15 @@
   <div class="section-panel" id="panel-potensi">
     <div class="gallery-grid">
       <div class="gallery-item">
-        <img src="aset/img/potensi 1.jpg" alt="Potensi-1">
+        <img src="aset/img/potensi%201.jpg" alt="Potensi 1">
         <p>Potensi 1</p>
       </div>
       <div class="gallery-item">
-        <img src="aset/img/potensi 2.jpeg" alt="Potensi-2">
+        <img src="aset/img/potensi%202.jpeg" alt="Potensi 2">
         <p>Potensi 2</p>
       </div>
       <div class="gallery-item">
-        <img src="aset/img/potensi 3.jpg" alt="Potensi-3">  <!-- tag ditutup dengan benar -->
+        <img src="aset/img/potensi%203.jpg" alt="Potensi 3">
         <p>Potensi 3</p>
       </div>
     </div>
@@ -151,34 +92,27 @@
 <div id="toast"></div>
 <script src="main.js"></script>
 <script>
-  /* ── Dropdown nav toggle ── */
   function toggleNav(id) {
     const li = document.getElementById(id);
     const isOpen = li.classList.contains('open');
-    // tutup semua dropdown dulu
     document.querySelectorAll('nav li.open').forEach(el => el.classList.remove('open'));
     if (!isOpen) li.classList.add('open');
   }
 
-  // Tutup dropdown kalau klik di luar
   document.addEventListener('click', function(e) {
     if (!e.target.closest('nav li')) {
       document.querySelectorAll('nav li.open').forEach(el => el.classList.remove('open'));
     }
   });
 
-  /* ── Tab switcher galeri ── */
   function switchTab(tab) {
-    // Tutup dropdown setelah klik
     document.querySelectorAll('nav li.open').forEach(el => el.classList.remove('open'));
-
     ['kegiatan', 'potensi'].forEach(function(t) {
       document.getElementById('panel-' + t).classList.toggle('active', t === tab);
       document.getElementById('btn-' + t).classList.toggle('active', t === tab);
     });
   }
 
-  // Baca hash URL saat halaman dibuka (#kegiatan atau #potensi)
   window.addEventListener('DOMContentLoaded', function() {
     const hash = window.location.hash.replace('#', '');
     if (hash === 'kegiatan' || hash === 'potensi') switchTab(hash);
