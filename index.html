@@ -5,14 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Desa Pepe &ndash; Beranda</title>
   <link rel="stylesheet" href="style.css"/>
+  <style>
+    nav li { position: relative; }
+    nav li .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%; left: 0;
+      background: var(--dp);
+      min-width: 160px;
+      border-radius: 0 0 8px 8px;
+      box-shadow: 0 8px 20px #0004;
+      z-index: 200;
+    }
+    nav li:hover .dropdown { display: block; }
+    nav li .dropdown a {
+      display: block;
+      padding: 0.6rem 1.2rem;
+      color: #cfc6ec;
+      font-size: 0.82rem;
+      border-bottom: 1px solid #ffffff10;
+    }
+    nav li .dropdown a:last-child { border-bottom: none; }
+    nav li .dropdown a:hover { background: var(--mp); color: var(--gold); }
+  </style>
 </head>
 <body>
 
 <header>
   <div class="logo-slot">
-    <!-- Ganti dengan: <img src="assets/img/logo.png" alt="Logo Desa Pepe"> -->
-    <img src="aset/img/logo_desa_pepe png.png"
-  alt="logo desa"class"logo">
+    <img src="aset/img/logo_desa_pepe png.png" alt="logo desa" class="logo">
   </div>
   <div class="header-text">
     <h1>Pemerintah Desa Pepe</h1>
@@ -24,7 +45,13 @@
   <ul>
     <li><a href="index.html" class="active">Home</a></li>
     <li><a href="profil.html">Profil</a></li>
-    <li><a href="galeri.html">Galeri</a></li>
+    <li>
+      <a href="galeri.html">Galeri ▾</a>
+      <div class="dropdown">
+        <a href="galeri.html#kegiatan">Kegiatan Desa</a>
+        <a href="galeri.html#potensi">Potensi Desa</a>
+      </div>
+    </li>
     <li><a href="unduhan.html">Unduhan</a></li>
   </ul>
 </nav>
@@ -36,7 +63,7 @@
     <p>Desa yang maju, bersih, dan sejahtera di Kecamatan Ngawen, Kabupaten Klaten.</p>
   </div>
 
-  <h2 class="sec-title">Layanan &amp; Informasi</h2>
+  <h2 class="sec-title" id="layanan">Layanan &amp; Informasi</h2>
   <div class="cards">
     <div class="card">
       <div class="ico">&#127963;</div>
@@ -66,7 +93,6 @@
 </footer>
 
 <div id="toast"></div>
-
 <script src="main.js"></script>
 </body>
 </html>
