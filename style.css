@@ -60,19 +60,55 @@ header {
 /* ── NAV ── */
 nav { background: var(--mp); }
 nav ul { list-style: none; display: flex; max-width: 960px; margin: 0 auto; }
-nav a {
+
+nav a,
+nav .nav-toggle {
   display: block;
   padding: 0.7rem 1.4rem;
   color: #cfc6ec;
   text-decoration: none;
   font-size: 0.85rem;
   font-weight: 500;
+  font-family: 'DM Sans', sans-serif;
   transition: background .2s, color .2s;
+  /* Reset style bawaan browser untuk <button> */
+  background: none;
+  border: none;
+  cursor: pointer;
+  line-height: normal;
+  -webkit-appearance: none;
+  appearance: none;
 }
-nav a:hover, nav a.active {
+nav a:hover, nav a.active,
+nav .nav-toggle:hover, nav .nav-toggle.active {
   background: var(--dp);
   color: var(--gold);
 }
+nav .nav-toggle:focus { outline: none; }
+
+/* ── DROPDOWN NAV ── */
+nav li { position: relative; }
+nav li .dropdown {
+  display: none;
+  position: absolute;
+  top: 100%; left: 0;
+  background: var(--dp);
+  min-width: 180px;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 8px 20px #0004;
+  z-index: 200;
+}
+nav li.open .dropdown { display: block; }
+nav li .dropdown a {
+  display: block;
+  padding: 0.6rem 1.2rem;
+  color: #cfc6ec;
+  font-size: 0.82rem;
+  border-bottom: 1px solid #ffffff10;
+  background: none;
+}
+nav li .dropdown a:last-child { border-bottom: none; }
+nav li .dropdown a:hover { background: var(--mp); color: var(--gold); }
 
 /* ── MAIN ── */
 main {
@@ -177,6 +213,39 @@ main {
 .gallery-item:hover { border-color: var(--lp); }
 .gallery-item img   { width: 100%; height: 100%; object-fit: cover; }
 .gallery-item .gi-ico { font-size: 2rem; }
+.gallery-item p {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--muted);
+  padding: 0.4rem 0 0.2rem;
+}
+
+/* ── TAB GALERI ── */
+.gallery-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+.tab-btn {
+  padding: 0.4rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.tab-btn:hover { border-color: var(--lp); color: var(--mp); }
+.tab-btn.active {
+  background: var(--mp);
+  color: var(--white);
+  border-color: var(--mp);
+}
+.section-panel { display: none; }
+.section-panel.active { display: block; }
 
 /* ── DOWNLOAD CARD ── */
 .dl-card {
@@ -246,7 +315,7 @@ footer strong { color: var(--gold); }
 @media (max-width: 600px) {
   header  { padding: .65rem 1rem; }
   .hero h2 { font-size: 1.45rem; }
-  nav a   { padding: .65rem .9rem; font-size: .78rem; }
+  nav a, nav .nav-toggle { padding: .65rem .9rem; font-size: .78rem; }
   main    { margin: 1rem auto; }
   .dl-card { flex-direction: column; text-align: center; }
 }
@@ -268,5 +337,5 @@ footer strong { color: var(--gold); }
 }
 #lb-close:hover { color: var(--gold); }
 
-/* ── PAGE FADE (diatur lewat JS) ── */
+/* ── PAGE FADE ── */
 body { opacity: 0; }
