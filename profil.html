@@ -5,13 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Desa Pepe &ndash; Profil</title>
   <link rel="stylesheet" href="style.css"/>
+  <style>
+    nav li { position: relative; }
+    nav li .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%; left: 0;
+      background: var(--dp);
+      min-width: 160px;
+      border-radius: 0 0 8px 8px;
+      box-shadow: 0 8px 20px #0004;
+      z-index: 200;
+    }
+    nav li:hover .dropdown { display: block; }
+    nav li .dropdown a {
+      display: block;
+      padding: 0.6rem 1.2rem;
+      color: #cfc6ec;
+      font-size: 0.82rem;
+      border-bottom: 1px solid #ffffff10;
+    }
+    nav li .dropdown a:last-child { border-bottom: none; }
+    nav li .dropdown a:hover { background: var(--mp); color: var(--gold); }
+  </style>
 </head>
 <body>
 
 <header>
   <div class="logo-slot">
-    <img src="aset/img/logo_desa_pepe png.png"
-  alt="logo desa"class"logo">
+    <img src="aset/img/logo_desa_pepe png.png" alt="logo desa" class="logo">
   </div>
   <div class="header-text">
     <h1>Pemerintah Desa Pepe</h1>
@@ -23,13 +45,19 @@
   <ul>
     <li><a href="index.html">Home</a></li>
     <li><a href="profil.html" class="active">Profil</a></li>
-    <li><a href="galeri.html">Galeri</a></li>
+    <li>
+      <a href="galeri.html">Galeri ▾</a>
+      <div class="dropdown">
+        <a href="galeri.html#kegiatan">Kegiatan Desa</a>
+        <a href="galeri.html#potensi">Potensi Desa</a>
+      </div>
+    </li>
     <li><a href="unduhan.html">Unduhan</a></li>
   </ul>
 </nav>
 
 <main>
-  <h2 class="sec-title">Profil Desa Pepe</h2>
+  <h2 class="sec-title" id="data">Profil Desa Pepe</h2>
 
   <table class="info-table">
     <tr><td>Nama Desa</td><td>Pepe</td></tr>
@@ -40,11 +68,11 @@
     <tr><td>Kepala Desa</td><td>Siti Hibatun Yulaika</td></tr>
     <tr><td>Jumlah Penduduk</td><td>3.000 jiwa</td></tr>
     <tr><td>Luas Wilayah</td><td>139 hektar</td></tr>
-    <tr><td>Jumlah RT / RW</td><td>RT 19 RW 10</td></tr>
-    <tr><td>Potensi Unggulan</td><td>sektor pertanian,sektor UMKM,sektorpeternakan</td></tr>
+    <tr><td>Jumlah RT / RW</td><td>19 RT / 10 RW</td></tr>
+    <tr><td>Potensi Unggulan</td><td>Pertanian, UMKM, Peternakan</td></tr>
   </table>
 
-  <h2 class="sec-title">Visi &amp; Misi</h2>
+  <h2 class="sec-title" id="visi">Visi &amp; Misi</h2>
   <div class="cards">
     <div class="card">
       <div class="ico">&#127919;</div>
@@ -54,7 +82,11 @@
     <div class="card">
       <div class="ico">&#128204;</div>
       <h3>Misi</h3>
-      <p>Meningkatkan kualitas pelayanan kepada masyarakat secara cepat, tepat, dan transparan,Mengembangkan potensi ekonomi masyarakat melalui UMKM dan usaha produktif desaMeningkatkan kualitas pendidikan, kesehatan, dan kesejahteraan masyarakat.</p>
+      <p>
+        1. Meningkatkan kualitas pelayanan kepada masyarakat secara cepat, tepat, dan transparan.<br><br>
+        2. Mengembangkan potensi ekonomi masyarakat melalui UMKM dan usaha produktif desa.<br><br>
+        3. Meningkatkan kualitas pendidikan, kesehatan, dan kesejahteraan masyarakat.
+      </p>
     </div>
   </div>
 </main>
@@ -64,7 +96,6 @@
 </footer>
 
 <div id="toast"></div>
-
 <script src="main.js"></script>
 </body>
 </html>
